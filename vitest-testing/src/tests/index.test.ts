@@ -1,6 +1,10 @@
-import {describe, it, expect} from "vitest";
+import {describe, it, expect, vi} from "vitest";
 import request from "supertest";
 import {app} from "../index";
+
+vi.mock('../db', () => ({
+primsaClient: {sum: { create: vi.fn() }}
+}));
 
 describe("POST /sum", () => {
     it("Should return sum of two", async () => {
