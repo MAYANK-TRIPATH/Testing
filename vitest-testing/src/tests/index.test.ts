@@ -20,6 +20,9 @@ vi.mock("../db", () => {
     }
 })
 
+// for deepmocking only this much code is enough
+vi.mock("../db")
+
 describe("POST /sum", () => {
     it("Should return sum of two", async () => {
         const res = await request(app).post("/sum").send({
