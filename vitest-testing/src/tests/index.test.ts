@@ -2,9 +2,23 @@ import {describe, it, expect, vi} from "vitest";
 import request from "supertest";
 import {app} from "../index";
 
+//very basic mock function
 vi.mock('../db', () => ({
 primsaClient: {sum: { create: vi.fn() }}
-}));
+})); 
+
+
+// Another mock function eg.
+
+vi.mock("../db", () => {
+    return {
+        prismaClient: {
+            request: {
+                create: vi.fn()
+            }
+        }
+    }
+})
 
 describe("POST /sum", () => {
     it("Should return sum of two", async () => {
